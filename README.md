@@ -7,8 +7,8 @@ A browser-based 3D ping pong game inspired by the classic Flash-era ping pong ga
 ## Documentation
 
 - **[README.md](README.md)** (this file) — what the project is and how to run it
-- **[spec.md](spec.md)** — functional and non-functional requirements with stable identifiers, used as the contract for what the app does
-- **[dev-notes.md](dev-notes.md)** — high-level technical overview for contributors: rendering layers, game loop, physics, AI, audio, build pipeline
+- **[docs/spec.md](docs/spec.md)** — functional and non-functional requirements with stable identifiers, used as the contract for what the app does
+- **[docs/dev-notes.md](docs/dev-notes.md)** — high-level technical overview for contributors: rendering layers, game loop, physics, AI, audio, build pipeline
 
 ## Features
 
@@ -43,7 +43,7 @@ A browser-based 3D ping pong game inspired by the classic Flash-era ping pong ga
 Clone the repository and install dependencies:
 
 ```bash
-git clone <your-repo-url> ping-pong
+git clone git@github.com:bvinothraj/ping-pong.git
 cd ping-pong
 npm install
 ```
@@ -104,18 +104,25 @@ ping-pong/
 │   └── game/
 │       ├── Game.ts             # Three.js scene, physics, collisions, AI, scoring
 │       └── Sound.ts            # Web Audio sound manager (synthesized SFX)
+├── docs/
+│   ├── spec.md                 # Functional and non-functional requirements
+│   ├── dev-notes.md            # Technical overview for contributors
+│   └── screenshot.png          # Image used in this README
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions workflow that builds and deploys to GitHub Pages
 ├── index.html
 ├── package.json
 ├── tsconfig.json
+├── tsconfig.node.json
 ├── vite.config.ts
-├── README.md                   # This file
-├── spec.md                     # Functional and non-functional requirements
-└── dev-notes.md                # Technical overview for contributors
+├── LICENSE
+└── README.md                   # This file
 ```
 
 `Game.ts` is the heart of the game — it owns the Three.js scene, the per-frame `requestAnimationFrame` loop, ball physics, paddle collision detection, the bounce-side rules, and the AI controller. The React layer only mounts the canvas and renders the HUD; per-frame state lives in refs/instance fields, not React state.
 
-For a deeper dive into how the rendering layers, game loop, physics, AI, and audio fit together, see **[dev-notes.md](dev-notes.md)**.
+For a deeper dive into how the rendering layers, game loop, physics, AI, and audio fit together, see **[docs/dev-notes.md](docs/dev-notes.md)**.
 
 ## Tuning knobs
 
