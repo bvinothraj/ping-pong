@@ -1,0 +1,199 @@
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1209;
+}
+
+.game-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.game-canvas {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  z-index: 1;
+}
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  user-select: none;
+  z-index: 10;
+}
+
+.scoreboard {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 16px 36px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 96px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.score.flash {
+  animation: score-flash 0.6s ease-out;
+}
+
+@keyframes score-flash {
+  0% { transform: scale(1); background: transparent; }
+  30% { transform: scale(1.18); background: rgba(255, 255, 255, 0.18); }
+  100% { transform: scale(1); background: transparent; }
+}
+
+.score-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.score-value {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-value.player { color: #ff6b6b; }
+.score-value.ai { color: #6be36b; }
+
+.score-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 56px;
+  justify-content: center;
+  position: relative;
+  padding: 0 4px;
+}
+
+.score-divider::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+}
+
+.score-target {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+.mute-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-family: inherit;
+  backdrop-filter: blur(6px);
+}
+
+.mute-btn:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.center-message {
+  margin-top: auto;
+  margin-bottom: 18%;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.center-message .hint {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
+.game-over-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: auto;
+}
+
+.game-over-overlay h1 {
+  font-size: 64px;
+  margin: 0 0 16px;
+}
+
+.game-over-overlay button {
+  margin-top: 24px;
+  padding: 12px 32px;
+  font-size: 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #ff6b6b;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.game-over-overlay button:hover {
+  background: #ff5151;
+}
