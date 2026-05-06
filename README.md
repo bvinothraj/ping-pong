@@ -4,6 +4,12 @@ A browser-based 3D ping pong game inspired by the classic Flash-era ping pong ga
 
 ![Ping Pong Game](docs/screenshot.png)
 
+## Documentation
+
+- **[README.md](README.md)** (this file) — what the project is and how to run it
+- **[spec.md](spec.md)** — functional and non-functional requirements with stable identifiers, used as the contract for what the app does
+- **[dev-notes.md](dev-notes.md)** — high-level technical overview for contributors: rendering layers, game loop, physics, AI, audio, build pipeline
+
 ## Features
 
 - 3D scene with a wood-floor environment, green table with painted lines, brown grid net, and round paddles
@@ -102,10 +108,14 @@ ping-pong/
 ├── package.json
 ├── tsconfig.json
 ├── vite.config.ts
-└── README.md
+├── README.md                   # This file
+├── spec.md                     # Functional and non-functional requirements
+└── dev-notes.md                # Technical overview for contributors
 ```
 
 `Game.ts` is the heart of the game — it owns the Three.js scene, the per-frame `requestAnimationFrame` loop, ball physics, paddle collision detection, the bounce-side rules, and the AI controller. The React layer only mounts the canvas and renders the HUD; per-frame state lives in refs/instance fields, not React state.
+
+For a deeper dive into how the rendering layers, game loop, physics, AI, and audio fit together, see **[dev-notes.md](dev-notes.md)**.
 
 ## Tuning knobs
 
