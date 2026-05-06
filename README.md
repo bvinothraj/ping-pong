@@ -2,7 +2,8 @@
 
 A browser-based 3D ping pong game inspired by the classic Flash-era ping pong games. Built with React, TypeScript, and Three.js. Single player vs. an AI opponent, first to 11 wins.
 
-![Ping Pong Game](docs/screenshot.png)
+<img src="docs/screenshot.png" alt="Ping Pong Game" width="300">
+
 
 ## Documentation
 
